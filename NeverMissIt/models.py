@@ -13,6 +13,9 @@ class EventDetails(models.Model):
     lastdatetoreg = models.DateField(verbose_name='Registration Deadline')
     maxparticipants = models.PositiveIntegerField(verbose_name='Max. Participants')
 
+    def __str__(self):
+        return self.title  # to show the tile of the event when accessing it as object
+
 # model for the participant list of events using foreign key "id" from EventDetails for the event recognition and "id" from User for the team leader recognition
 class EventParticipants(models.Model):
     eventid = models.ForeignKey(EventDetails, on_delete=models.CASCADE) # foreign key to the EventDetails for event recognition
