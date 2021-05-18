@@ -5,5 +5,11 @@
 </head>
 <body>
     <h1>profile page</h1>
+
+    <br><br>
+    hello, {{ request.user }}
+    <br><br>
+    <a href="{% url 'NeverMissIt:logoutpage' %}">logout</a>
+
 </body>
 </html>

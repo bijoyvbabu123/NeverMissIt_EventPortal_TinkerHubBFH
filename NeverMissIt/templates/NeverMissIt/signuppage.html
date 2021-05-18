@@ -5,5 +5,34 @@
 </head>
 <body>
     <h1>signup page</h1>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {{ form.username.label }}
+        {{ form.username}}
+        <br><br>
+        {{ form.email.label }}
+        {{ form.email}}
+        <br><br>
+        {{ form.password1.label }}
+        {{ form.password1}}
+        <br><br>
+        {{ form.password2.label }}
+        {{ form.password2}}
+
+        <input type="submit" value='Create User'>
+
+    </form>
+
+    <br>
+    {{form.errors}}
+    <br>
+
+    <br><br>
+    already a customer?
+    <a href="{% url 'NeverMissIt:loginpage' %}">login</a>
+    
 </body>
 </html>

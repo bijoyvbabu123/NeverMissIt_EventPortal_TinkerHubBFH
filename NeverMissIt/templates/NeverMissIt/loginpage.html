@@ -5,5 +5,28 @@
 </head>
 <body>
     <h1>login page</h1>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <label for="username">Username</label>
+        <input type="text" name='username'>
+        <br><br>
+        <label for="password">Password</label>
+        <input type="password" name='password'>
+        <br><br>
+        <input type="submit" value='login'>
+    </form>
+
+    {% for message in messages %}
+        <br>
+        {{message}}
+        <br>
+    {% endfor %}
+
+    <br><br>
+    A new customer?
+    <a href="{% url 'NeverMissIt:signuppage' %}">Signup</a>
 </body>
 </html>
