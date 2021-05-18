@@ -1,9 +1,15 @@
 from django.shortcuts import render
 
+from datetime import date
+
+from .models import EventDetails
+
 # Create your views here.
 
 def homepage(request):
-    context = {}
+    # EventDetails.objects.filter(lastdatetoreg__gt=date.today()).order_by('lastdatetoreg')
+    coming_events_in_order = EventDetails.objects.filter(lastdatetoreg__gt=date.today()).order_by('lastdatetoreg')
+    context = {'events':coming_events_in_order}
     return render(request, 'NeverMissIt/homepage.html', context)
 
 def signuppage(request):

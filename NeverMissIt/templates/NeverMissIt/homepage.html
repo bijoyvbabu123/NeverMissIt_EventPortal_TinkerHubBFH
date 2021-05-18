@@ -5,5 +5,22 @@
 </head>
 <body>
     <h1>home page</h1>
+
+    {% if events  %}
+    <ul>
+        {% for e in events %}
+        <li><a href="{% url 'NeverMissIt:loginpage' %}">{{ e.title }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No polls are yet available</h3>
+    {% endif %}
+
+    <br>
+    <br>
+    <a href="{% url 'NeverMissIt:loginpage' %}">login</a>
+    <a href="{% url 'NeverMissIt:signuppage' %}">signup</a>
+
 </body>
 </html>
