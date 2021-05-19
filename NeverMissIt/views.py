@@ -7,7 +7,7 @@ from django.contrib import messages
 
 from datetime import date
 
-from .models import EventDetails
+from .models import EventDetails, EventParticipants
 from .forms import SignUpForm
 
 # Create your views here.
@@ -18,7 +18,7 @@ def homepage(request):
 
     else:
         # EventDetails.objects.filter(lastdatetoreg__gt=date.today()).order_by('lastdatetoreg')
-        coming_events_in_order = EventDetails.objects.filter(lastdatetoreg__gt=date.today()).order_by('lastdatetoreg')
+        coming_events_in_order = EventDetails.objects.filter(lastdatetoreg__gte=date.today()).order_by('lastdatetoreg')
         context = {'events':coming_events_in_order}
         return render(request, 'NeverMissIt/homepage.html', context)
 
@@ -66,7 +66,12 @@ def logoutpage(request):
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "
 def profilepage(request):
-    context = {}
+    registered_not_over = EventDetails.objects.filter( id__in=[x.eventid_id for x in EventParticipants.objects.filter(teamleader_id = request.user.pk) ] ).filter(eventdate__gte=date.today()).order_by('eventdate')
+    registered_over = EventDetails.objects.filter( id__in=[x.eventid_id for x in EventParticipants.objects.filter(teamleader_id = request.user.pk) ] ).filter(eventdate__lt=date.today()).order_by('-eventdate')
+    created_not_over = EventDetails.objects.filter(createduserid_id = request.user.pk).filter(eventdate__gte=date.today()).order_by('eventdate')
+    created_over = EventDetails.objects.filter(createduserid_id = request.user.pk).filter(eventdate__lt=date.today()).order_by('-eventdate')
+    available_events = EventDetails.objects.filter(lastdatetoreg__gte=date.today()).exclude( id__in=[x.eventid_id for x in EventParticipants.objects.filter(teamleader_id = request.user.pk) ] ).exclude( createduserid_id = request.user.pk ).order_by('lastdatetoreg')
+    context = {'registered_not_over':registered_not_over, 'registered_over':registered_over, 'created_not_over':created_not_over, 'created_over':created_over, 'available_events':available_events}
     return render(request, 'NeverMissIt/profilepage.html', context)
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "

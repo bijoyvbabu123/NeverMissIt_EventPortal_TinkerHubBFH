@@ -10,6 +10,81 @@
     hello, {{ request.user }}
     <br><br>
     <a href="{% url 'NeverMissIt:logoutpage' %}">logout</a>
+    <br><br>
+
+    <h3>registered events not yet over :</h3>
+    <br>
+    {% if registered_not_over  %}
+    <ul>
+        {% for e in registered_not_over %}
+        <li><a href="{% url 'NeverMissIt:detaileventpage' %}">{{ e.title }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No events are yet available</h3>
+    {% endif %}
+    <br><br>
+
+    <h3>registered events that are over :</h3>
+    <br>
+    {% if registered_over  %}
+    <ul>
+        {% for e in registered_over %}
+        <li><a href="{% url 'NeverMissIt:detaileventpage' %}">{{ e.title }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No events are yet available</h3>
+    {% endif %}
+    <br><br>
+
+    <h3>events available to register :</h3>
+    <br>
+    {% if available_events  %}
+    <ul>
+        {% for e in available_events %}
+        <li><a href="{% url 'NeverMissIt:registereventpage' %}">{{ e.title }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No events are yet available</h3>
+    {% endif %}
+    <br><br>
+
+
+    <a href="{% url 'NeverMissIt:createeventpage' %}">create an event</a>
+    <br><br>
+
+    <h3>created events not yet over :</h3>
+    <br>
+    {% if created_not_over  %}
+    <ul>
+        {% for e in created_not_over %}
+        <li><a href="{% url 'NeverMissIt:editeventpage' %}">{{ e.title }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No events are yet available</h3>
+    {% endif %}
+    <br><br>
+
+    <h3>created events that are over :</h3>
+    <br>
+    {% if created_over  %}
+    <ul>
+        {% for e in created_over %}
+        <li><a href="{% url 'NeverMissIt:detaileventpage' %}">{{ e.title }}</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No events are yet available</h3>
+    {% endif %}
+    <br><br>
 
 </body>
 </html>
