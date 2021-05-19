@@ -17,7 +17,7 @@
     {% if registered_not_over  %}
     <ul>
         {% for e in registered_not_over %}
-        <li><a href="{% url 'NeverMissIt:detaileventpage' %}">{{ e.title }}</a></li>
+        <li><a href="{% url 'NeverMissIt:detaileventpage' %}?eventid={{ e.pk }}">{{ e.title }}</a></li>
         <br>
         {% endfor %}
     </ul>
@@ -31,7 +31,7 @@
     {% if registered_over  %}
     <ul>
         {% for e in registered_over %}
-        <li><a href="{% url 'NeverMissIt:detaileventpage' %}">{{ e.title }}</a></li>
+        <li><a href="{% url 'NeverMissIt:detaileventpage' %}?eventid={{ e.pk }}">{{ e.title }}</a></li>
         <br>
         {% endfor %}
     </ul>
@@ -45,7 +45,7 @@
     {% if available_events  %}
     <ul>
         {% for e in available_events %}
-        <li><a href="{% url 'NeverMissIt:registereventpage' %}">{{ e.title }}</a></li>
+        <li><a href="{% url 'NeverMissIt:registereventpage' %}?eventid={{ e.pk }}">{{ e.title }}</a></li>
         <br>
         {% endfor %}
     </ul>
@@ -63,7 +63,7 @@
     {% if created_not_over  %}
     <ul>
         {% for e in created_not_over %}
-        <li><a href="{% url 'NeverMissIt:editeventpage' %}">{{ e.title }}</a></li>
+        <li><a href="{% url 'NeverMissIt:editeventpage' %}?eventid={{ e.pk }}">{{ e.title }}</a></li>
         <br>
         {% endfor %}
     </ul>
@@ -77,7 +77,7 @@
     {% if created_over  %}
     <ul>
         {% for e in created_over %}
-        <li><a href="{% url 'NeverMissIt:detaileventpage' %}">{{ e.title }}</a></li>
+        <li><a href="{% url 'NeverMissIt:detaileventpage' %}?eventid={{ e.pk }}">{{ e.title }}</a></li>
         <br>
         {% endfor %}
     </ul>
