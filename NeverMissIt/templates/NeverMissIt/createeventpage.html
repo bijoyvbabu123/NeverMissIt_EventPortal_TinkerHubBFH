@@ -5,5 +5,42 @@
 </head>
 <body>
     <h1>event creation page</h1>
+    
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {{ form.title.label }}
+        {{ form.title }}
+        <br><br>
+
+        {{ form.description.label }}
+        {{ form.description }}
+        <br><br>
+
+        {{ form.eventdate.label }}
+        {{ form.eventdate }}
+        <br><br>
+
+        {{ form.location.label }}
+        {{ form.location }}
+        <br><br>
+
+        {{ form.lastdatetoreg.label }}
+        {{ form.lastdatetoreg }}
+        <br><br>
+
+        {{ form.maxparticipants.label }}
+        {{ form.maxparticipants }}
+        <br><br>
+
+        <input type="submit" value="Create Event">
+
+    </form>
+
+    {{ form.errors }}
+
+    <a href="{% url 'NeverMissIt:profilepage' %}">cancel</a>
+
 </body>
 </html>

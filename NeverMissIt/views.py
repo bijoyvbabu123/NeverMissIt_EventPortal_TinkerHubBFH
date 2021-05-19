@@ -8,7 +8,7 @@ from django.contrib import messages
 from datetime import date
 
 from .models import EventDetails, EventParticipants
-from .forms import SignUpForm
+from .forms import SignUpForm, EventCreationForm
 
 # Create your views here.
 
@@ -76,7 +76,17 @@ def profilepage(request):
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "
 def createeventpage(request):
-    context = {}
+    form = EventCreationForm()
+
+    if request.method == "POST":
+        form = EventCreationForm(request.POST)
+        if form.is_valid():
+            eventform = form.save(commit=False)
+            eventform.createduserid_id = request.user.pk
+            eventform.save()
+            return redirect('NeverMissIt:profilepage')
+
+    context = {'form':form}
     return render(request, 'NeverMissIt/createeventpage.html', context)
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "
