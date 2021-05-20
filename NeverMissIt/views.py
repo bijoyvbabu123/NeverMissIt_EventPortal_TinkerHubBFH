@@ -104,7 +104,16 @@ def detaileventpage(request):
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "
 def editeventpage(request):
-    context = {}
+    eventid = request.GET['eventid']
+    event = EventDetails.objects.get(pk=eventid)
+
+    if request.method == "POST":
+        if bool(request.POST.get('delyesorno')):
+            EventDetails.objects.filter(pk=eventid).delete()
+            EventParticipants.objects.filter(eventid_id=eventid).delete()
+            return redirect('NeverMissIt:profilepage')
+
+    context = {'event':event}
     return render(request, 'NeverMissIt/editeventpage.html', context)
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "

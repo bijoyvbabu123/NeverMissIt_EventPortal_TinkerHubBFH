@@ -5,5 +5,25 @@
 </head>
 <body>
     <h1>event editing page</h1>
+
+    {{ event.title }} <br>
+    {{ event.description }} <br>
+    {{ event.eventdate }} <br>
+    {{ event.location }} <br>
+    {{ event.lastdatetoreg }} <br>
+    {{ event.maxparticipants }} <br>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <label for='check'>Delete the event : </label>
+        <input type="checkbox" name="delyesorno" id='check'>
+
+        <input type="submit" value="DELETE">
+
+        <a href="{% url 'NeverMissIt:profilepage' %}">BACK TO HOMEPAGE</a>
+
+    </form>
 </body>
 </html>
