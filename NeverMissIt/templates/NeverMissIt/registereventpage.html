@@ -5,5 +5,31 @@
 </head>
 <body>
     <h1>event registration page</h1>
+
+    <h2> {{ event.title}} </h2> <br>
+    <h4> event description : {{ event.description }} </h4> <br>
+    <h4>event date : {{ event.eventdate }}</h4> <br>
+    <h4>event venue : {{ event.location }}</h4> <br>
+    <h4>last date to reg : {{ event.lastdatetoreg }}</h4>
+    <h4>you will the team leader by default</h4> <br>
+    <h6>Enter your teammates names if any, or just leave it blank</h6> <br>
+    <h4>maximum number of participants for a team is {{event.maxparticipants}}</h4>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {% for i in  teammates%}
+            <label for="" >{{ i }}</label>
+            <input type="text" name='{{ i }}' id="">
+            <br><br>
+        {% endfor %}
+
+        <input type="submit", value='register'>
+
+    </form>
+
+    <a href="{% url 'NeverMissIt:profilepage' %}">cancel registration</a>
+
 </body>
 </html>

@@ -101,5 +101,23 @@ def editeventpage(request):
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "
 def registereventpage(request):
-    context = {}
+    eventid = request.GET['eventid']
+    no_of_teammates = EventDetails.objects.get(pk=eventid).maxparticipants - 1
+    teammates = ["teammate "+str(x) for x in range(1, no_of_teammates+1)]
+    event = EventDetails.objects.get(pk=eventid)
+
+    if request.method == 'POST':
+        t = []
+        for i in teammates:
+            t.append(request.POST.get(i).strip())
+        while '' in t:
+            t.remove('')
+        team = "&".join(t)
+        print(team)
+        eventregister = EventParticipants(teamleader_id=request.user.pk, eventid_id=eventid, participants=team)
+        eventregister.save()
+        return redirect('NeverMissIt:profilepage')
+    
+    # passing teammates, eventdetail object of the current event
+    context = {'teammates':teammates, 'event':event}
     return render(request, 'NeverMissIt/registereventpage.html', context)
