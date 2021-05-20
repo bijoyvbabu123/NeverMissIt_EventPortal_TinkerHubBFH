@@ -91,7 +91,15 @@ def createeventpage(request):
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "
 def detaileventpage(request):
-    context = {}
+    eventid = request.GET['eventid']
+    event = EventDetails.objects.get(pk=eventid)
+    teammates = []
+    #condition for the user for being the creator (EventDetails.objects.get(pk=eventid).createduserid_id==request.user.pk)
+    #condition for the user if he is a registered participant ( it is the else condition for the previous one )
+    if not EventDetails.objects.get(pk=eventid).createduserid_id == request.user.pk:
+        team = EventParticipants.objects.get(teamleader_id=request.user.pk, eventid_id=eventid).participants
+        teammates = team.split('&')
+    context = {'event':event, 'teammates':teammates}
     return render(request, 'NeverMissIt/detaileventpage.html', context)
 
 @login_required(login_url='NeverMissIt:loginpage') # only allowed if " LOGGED IN "

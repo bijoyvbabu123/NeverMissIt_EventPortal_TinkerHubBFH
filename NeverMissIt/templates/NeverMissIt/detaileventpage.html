@@ -5,5 +5,23 @@
 </head>
 <body>
     <h1>event detail page</h1>
+    {{ event.title }} <br>
+    {{ event.description }} <br>
+    {{ event.eventdate }} <br>
+    {{ event.location }} <br>
+    {{ event.lastdatetoreg }} <br>
+    {{ event.maxparticipants }} <br>
+
+    {% if teammates %}
+        your teammates are : <br>
+        <ul>
+            {% for t in teammates %}
+                <li>{{ t }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'NeverMissIt:profilepage' %}">profile</a>
 </body>
 </html>
