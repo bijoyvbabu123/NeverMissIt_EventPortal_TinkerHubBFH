@@ -22,3 +22,6 @@ class EventParticipants(models.Model):
     teamleader = models.ForeignKey(User, on_delete=models.CASCADE) # foreign key to the User to set the team leader as the registering user as default
     participants = models.TextField() # storing the participants names and is planned to be stored as a single string seperated by special symbol. not going to create form form this model.
     # the foreign key from User is under observation and can change if needed .
+
+    def __str__(self):
+        return self.eventid.title + " (" + self.teamleader.username + ")"
