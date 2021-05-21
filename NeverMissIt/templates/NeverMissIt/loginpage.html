@@ -1,19 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            color: black;
+          margin: 0;
+          padding: 0;
+          background-image: url("https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80");
+          -webkit-background-size: cover;
+          background-size: cover;
+          background-repeat: no-repeat;
+          font-family: sans-serif;
+        }
+        .login_box {
+          width: 320px;
+          background: rgba(255, 255, 255, 0.863);
+          color: #000;
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          box-sizing: border-box;
+          padding: 60px 30px;
+        }
+        .avatar {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          position: absolute;
+          top: -40px;
+          right: calc(50% - 40px);
+        }
+        h1 {
+          margin-bottom: 10px;
+          padding: 0 0;
+          text-align: center;
+          font-size: 22px;
+        }
+        .login_box p {
+          margin: 0;
+          padding: 0;
+          font-weight: bold;
+        }
+        .login_box input {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .login_box input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+          border: none;
+          border-bottom: 1px solid #000;
+          background: transparent;
+          outline: none;
+          height: 40px;
+          color: #000;
+          font-size: 16px;
+        }
+        .login_box input[type="submit"] {
+          border: none;
+          outline: none;
+          height: 40px;
+          background: #d22938;
+          color: #fff;
+          font-size: 18px;
+          font-weight: bold;
+          border-radius: 20px;
+        }
+        .login_box input[type="submit"]:hover {
+          cursor: pointer;
+          background: #ffc107;
+          color: #000;
+        }
+        .right{
+            position: absolute;
+            right: 34px;
+            top: 20px;
+            display: inline-block;
+            border-color: black;
+        }
+        .btn{
+            margin: 0px 9px;
+            background-color: rgb(255, 232, 21);
+            color: yellow;
+            padding: 4px 14px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: grey;
+        }
+        #text2 a{
+            text-decoration: none;
+            font-family:cursive;
+            font-weight: bolder;
+            font-size: unset;
+            float: right;
+            background-color:transparent;
+            color: rgb(0, 0, 0);
+        }
+        </style>
+    
     <title>Login</title>
 </head>
 <body>
-    <h1>login page</h1>
-
+    <div class="login_box">
+        <img src="https://blog.trello.com/hubfs/Productivity__236_-_More_Productive_and_Efficient_Events_402x.png" alt="login_avatar" class="avatar">
+        <h1>Login</h1>
     <form action="" method="POST">
 
         {% csrf_token %}
 
-        <label for="username">Username</label>
+        <p>Username</p>
         <input type="text" name='username'>
         <br><br>
-        <label for="password">Password</label>
+        <p>Password</p>
         <input type="password" name='password'>
         <br><br>
         <input type="submit" value='login'>
@@ -25,8 +128,13 @@
         <br>
     {% endfor %}
 
-    <br><br>
-    A new customer?
-    <a href="{% url 'NeverMissIt:signuppage' %}">Signup</a>
+    <br>
+    <b>A new customer?</b>
+    <a href="{% url 'NeverMissIt:signuppage' %}"><b>Signup</b></a>
+    </div>
+     <!-- right box for buttons -->
+     <div class="right">
+      <button class="btn" id="text2"><a href="{% url 'NeverMissIt:homepage' %}" id="log">Home</a></button>
+  </div>
 </body>
 </html>

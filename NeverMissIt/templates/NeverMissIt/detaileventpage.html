@@ -2,26 +2,123 @@
 <html lang="en">
 <head>
     <title>Event Detail</title>
+    <style>
+         body{
+            font-family: 'Zilla Slab', serif;
+            background-image: url("https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80");
+                   background-repeat:no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        
+         }
+         .dtls_box {
+  background: black;
+  color: rgb(255, 225, 56);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 6px 30px;
+}
+         #text1 a{
+            text-decoration: none;
+            font-family:cursive;
+            font-weight: bolder;
+            font-size: unset;
+            float: right;
+            background-color:transparent;
+            color: rgb(0, 0, 0);
+        }
+         h1{
+
+text-align: center;
+font-family: monospace;
+font-weight: 600;
+font-size: 35px;
+color: black;
+font-style: oblique;
+font-synthesis: weight;
+}
+h3{
+
+text-align: center;
+font-family: monospace;
+font-size: 25px;
+color: rgb(255, 225, 56);
+font-style: oblique;
+}
+.btn{
+            margin: 0px 9px;
+            font-weight: bolder;
+            background-color: rgb(255, 232, 21);
+            color: rgb(0, 0, 0);
+            padding: 4px 14px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .tms{
+            margin: 0px 9px;
+            font-weight: bolder;
+            background-color: rgb(255, 232, 21);
+            color: rgb(0, 0, 0);
+            padding: 4px 14px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        .right{
+            position: absolute;
+            right: 34px;
+            top: 20px;
+            display: inline-block;
+            border-color: black;
+        }
+        .left{
+            position: absolute;
+            left: 32px;
+            top: 20px;
+            display: inline-block;  
+        }
+        .left img{
+            width: 80px;
+            border-radius: 75px;
+            
+        }
+    </style>
 </head>
 <body>
-    <h1>event detail page</h1>
-    {{ event.title }} <br>
-    {{ event.description }} <br>
-    {{ event.eventdate }} <br>
-    {{ event.location }} <br>
-    {{ event.lastdatetoreg }} <br>
-    {{ event.maxparticipants }} <br>
+    <header class="header">
+        <!-- Left box for logo -->
+         <div class="left">
+             <img src="https://blog.trello.com/hubfs/Productivity__236_-_More_Productive_and_Efficient_Events_402x.png" alt="events">
+             </div>
+    <h1>Event Details</h1>
+    <div class="dtls_box">    
+    <h3><u>{{ event.title }}</u></h3>
+    <b>Details:</b>
+    {{ event.description }} <br><br>
+    <b> Date:</b>
+    {{ event.eventdate }} <br><br>
+    <b>Venue:</b>
+    {{ event.location }} <br><br>
+    <b>Last date to reg:</b>
+    {{ event.lastdatetoreg }} <br><br>
+    <b>No.of Participants: {{ event.maxparticipants }} </b><br><br>
 
     {% if teammates %}
-        your teammates are : <br>
-        <ul>
+    <b>Teammates :</b>
             {% for t in teammates %}
-                <li>{{ t }}</li>
+                <button class="tms">{{ t }}</button>
             {% endfor %}
-        </ul>
     {% endif %}
-
+</div>
     <br>
-    <a href="{% url 'NeverMissIt:profilepage' %}">profile</a>
+     <!-- right box for buttons -->
+     <div class="right">
+    <button class="btn" id="text1"><a href="{% url 'NeverMissIt:profilepage' %}">Profile</a></button>
+     </div>
 </body>
 </html>

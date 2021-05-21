@@ -2,20 +2,112 @@
 <html lang="en">
 <head>
     <title>Register for an Event</title>
+    <style>
+        body{
+            font-family: 'Zilla Slab', serif;
+            background-image: url("https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80");
+                   background-repeat:no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        
+         }
+         .regn_box4 {
+
+background: yellow;
+font-family: 'Zilla Slab', serif;
+color: rgb(0, 0, 0);
+left: 215px;
+top: 179px;
+position: absolute;
+transform: translate(-50%, -50%);
+box-sizing: border-box;
+}
+
+         element.style {
+    margin: -8px;
+    height: 143px;
+    width: 395px;
+}
+         .regn_box1 {
+
+  background: black;
+  color: rgb(255, 225, 56);
+  top: 58%;
+  left: 33%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 4px 30px;
+}
+.regn_box2 {
+
+background: black;
+color: rgb(255, 225, 56);
+top: 58%;
+left: 63%;
+position: absolute;
+transform: translate(-50%, -50%);
+box-sizing: border-box;
+border-radius: 20px;
+padding: 18px 30px;
+}
+.btn{
+            margin: 0px 9px;
+            background-color: rgb(255, 232, 21);
+            color: rgb(0, 0, 0);
+            font-weight: bolder;
+            padding: 4px 14px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: grey;
+        }
+        .left{
+            position: absolute;
+            left: 32px;
+            top: 20px;
+            display: inline-block;  
+        }
+        .left img{
+            width: 80px;
+            border-radius: 75px;
+            
+        }
+        #text3 a{
+            text-decoration: none;
+            font-family: 'Zilla Slab', serif;
+            font-weight: bolder;
+            font-size: unset;
+            float: right;
+            background-color:transparent;
+            color: rgb(0, 0, 0);
+        }
+    </style>
 </head>
 <body>
-    <h1>event registration page</h1>
+    <header class="header">
+        <!-- Left box for logo -->
+         <div class="left">
+             <img src="https://blog.trello.com/hubfs/Productivity__236_-_More_Productive_and_Efficient_Events_402x.png" alt="events">
+             </div>
+    <div class="regn_box1">
 
-    <h2> {{ event.title}} </h2> <br>
-    <h4> event description : {{ event.description }} </h4> <br>
-    <h4>event date : {{ event.eventdate }}</h4> <br>
-    <h4>event venue : {{ event.location }}</h4> <br>
-    <h4>last date to reg : {{ event.lastdatetoreg }}</h4>
-    <h4>you will the team leader by default</h4> <br>
-    <h6>Enter your teammates names if any, or just leave it blank</h6> <br>
-    <h4>maximum number of participants for a team is {{event.maxparticipants}}</h4>
-
-    <form action="" method="POST">
+    <h2> {{ event.title}} </h2>
+    <h4> Event Description :</h4> <form class="regn_box4"><textarea disabled placeholder="10" rows="10" cols="50"> {{ event.description }} </textarea></form>
+    <br><br><br><br><br><br><br><br>
+    <h4>Event date : {{ event.eventdate }}</h4>
+    <h4>Event venue : {{ event.location }}</h4>
+    <h4>Last date to reg : {{ event.lastdatetoreg }}</h4>
+    <h4>You will the team leader by default</h4>
+    <h4>Enter your teammates names if any, or just leave it blank</h4> 
+    <h4>Maximum Number of Participants for a Team is {{event.maxparticipants}}</h4>
+    </div>
+    <form class="regn_box2" action="" method="POST">
 
         {% csrf_token %}
 
@@ -25,11 +117,8 @@
             <br><br>
         {% endfor %}
 
-        <input type="submit", value='register'>
-
+        <input class="btn" id="text3" type="submit", value='Register'>
+        <button class="btn" id="text3"><a href="{% url 'NeverMissIt:profilepage' %}">Cancel Registration</a></button>
     </form>
-
-    <a href="{% url 'NeverMissIt:profilepage' %}">cancel registration</a>
-
 </body>
 </html>
