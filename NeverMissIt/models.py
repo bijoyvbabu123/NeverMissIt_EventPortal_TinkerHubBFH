@@ -11,7 +11,7 @@ class EventDetails(models.Model):
     eventdate = models.DateField(verbose_name='Event Date')
     location = models.CharField(max_length=200, verbose_name='Event Happening At')
     lastdatetoreg = models.DateField(verbose_name='Registration Deadline')
-    maxparticipants = models.PositiveIntegerField(verbose_name='Max. Participants')
+    maxparticipants = models.PositiveIntegerField(verbose_name='Max. members in a Team')
 
     def __str__(self):
         return self.title  # to show the tile of the event when accessing it as object
