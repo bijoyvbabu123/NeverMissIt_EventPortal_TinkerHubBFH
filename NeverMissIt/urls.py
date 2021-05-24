@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'NeverMissIt'
 
+# all the url and the corresponding views.
 urlpatterns = [
     #path('home/', views.homepage, name='homepage'),
     path('', views.homepage, name='homepage'),

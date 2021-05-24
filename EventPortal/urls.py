@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('NeverMissIt.urls')),
+    path('', include('NeverMissIt.urls')), # redirecting to the app's url configuration.
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'NeverMissIt.apps.NevermissitConfig',
 ]
 
+# added the whitenoise middleware for the deployment process
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
@@ -85,6 +86,7 @@ DATABASES = {
     }
 }
 
+# added the below code segment to facilitate linking the postgresql database provided by heroku. remove it for running locally.
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
