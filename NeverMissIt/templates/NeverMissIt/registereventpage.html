@@ -54,6 +54,13 @@ box-sizing: border-box;
 border-radius: 20px;
 padding: 18px 30px;
 }
+.right{
+            position: absolute;
+            right: 34px;
+            top: 20px;
+            display: inline-block;
+            border-color: black;
+        }
 .btn{
             margin: 0px 9px;
             background-color: rgb(255, 232, 21);
@@ -116,9 +123,13 @@ padding: 18px 30px;
             <input type="text" name='{{ i }}' id="">
             <br><br>
         {% endfor %}
-
         <input class="btn" id="text3" type="submit", value='Register'>
-        <button class="btn" id="text3"><a href="{% url 'NeverMissIt:profilepage' %}">Cancel Registration</a></button>
-    </form>
+
+       </form>
+        <!-- right box for buttons -->
+     <div class="right">
+       
+       <button class="btn" id="text3"><a href="{% url 'NeverMissIt:profilepage' %}">Cancel Registration</a></button>
+   </div>
 </body>
 </html>
